@@ -1,0 +1,48 @@
+<!doctype html><html><head></head><body><!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Notes App</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 20px;
+		}
+
+		textarea {
+			width: 100%;
+			height: 200px;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>HTML Coder</h1>
+
+	<textarea id="noteInput" placeholder="Write your code here..."></textarea>
+
+	<button onclick="downloadNote()">Download Note</button>
+
+	<script src="script.js"></script>
+</body>
+
+</html><script type="text/javascript">function downloadNote() {
+  const noteContent = document.getElementById('noteInput').value;
+
+  if (noteContent.trim() !== '') {
+    const blob = new Blob([noteContent], { type: 'text/plain' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'note.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  } else {
+    alert('Please write something before downloading.');
+  }
+}
+</script></body><html>
